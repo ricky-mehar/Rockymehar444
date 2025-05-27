@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int maxArea(std::vector<int>& height) {
+        int n = height.size();
+        int left = 0, right = n - 1; // Two pointers
+        int maxArea = 0;
+
+        while (left < right) {
+            // Calculate the area between the two pointers
+            int width = right - left;
+            int area = std::min(height[left], height[right]) * width;
+
+            // Update the maximum area
+            maxArea = std::max(maxArea, area);
+
+            // Move the pointer pointing to the shorter height
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return maxArea;
+    }
+};
+
+ 
